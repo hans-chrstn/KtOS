@@ -1,1 +1,6 @@
 .direnv
+linux/
+iso/
+rootfs/
+myos.iso
+initramfs.cpio.gz

@@ -24,6 +24,8 @@
     devShells = forAllSystems ({ pkgs }: let 
       libraries = with pkgs; [
           ncurses
+          grub2
+          xorriso
           bzip2
           git
           gnumake
@@ -69,6 +71,12 @@
           buildInputs = libraries;
           nativeBuildInputs = libraries;
           LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath libraries;
+          shellHook = ''
+            if [ ! -d ./linux ]; then
+              echo "Cloning linux kernel.."
+              git clone https://github.com/torvalds/linux.git
+            fi
+          '';
         };
     });
   };
