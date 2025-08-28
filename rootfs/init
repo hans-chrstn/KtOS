@@ -1,0 +1,7 @@
+#!/bin/busybox sh
+# to fix no tty issue with bash
+mount -t proc proc /proc
+mount -t sysfs sys /sys
+
+echo "Hello from my OS!"
+exec /bin/busybox sh
